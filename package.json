@@ -1,0 +1,15 @@
+{
+  "name": "http-latency-measurement",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "serverless": "serverless"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^1.3.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.61.3",
+    "serverless-google-cloudfunctions": "^2.3.3"
+  }
+}

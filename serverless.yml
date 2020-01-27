@@ -1,0 +1,30 @@
+service: http-latency-measurement
+
+provider:
+  name: google
+  runtime: nodejs8
+  region: europe-west1
+  project: my-gcp-project
+  credentials: keyfile.json
+
+functions:
+  measureLatency:
+    handler: measureLatency
+    memorySize: 128
+    timeout: 60s
+    environment:
+      NODE_TLS_REJECT_UNAUTHORIZED: '0'
+    events:
+      - event:
+          eventType: google.pubsub.topic.publish
+          resource: projects/my-gcp-project/topics/measure-latency1
+
+package:
+  exclude:
+    - '**/*'
+  include:
+    - index.js
+    - package.json
+
+plugins:
+  - serverless-google-cloudfunctions
